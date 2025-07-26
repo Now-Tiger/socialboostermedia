@@ -1,20 +1,23 @@
 # Stage 1: The Build Environment
 FROM node:18-alpine AS builder
 
-# Set the working directory for the application
+# Set the working directory to the application's root inside the container
+WORKDIR /app
+
+# Copy the entire frontend directory from the build context
+# This is crucial as it correctly locates the frontend folder.
+COPY ./frontend ./frontend
+
+# Change the working directory to the frontend folder for all subsequent commands
 WORKDIR /app/frontend
 
-# Copy package.json and package-lock.json from the frontend folder
-# to leverage Docker caching.
-COPY ./frontend/package.json ./package.json
-COPY ./frontend/package-lock.json ./package-lock.json
+# Copy package.json and package-lock.json to leverage Docker caching.
+# Note: These files are now copied from within the `/app/frontend` WORKDIR.
+COPY package.json package-lock.json ./
 
 # Install all dependencies (including devDependencies)
 # Using `npm install` here to automatically fix any lock file inconsistencies.
 RUN npm install
-
-# Copy the rest of the frontend application code
-COPY ./frontend/ .
 
 # Run the Next.js build command
 RUN npm run build
@@ -40,3 +43,4 @@ EXPOSE 3000
 
 # Set the command to run the application
 CMD ["npm", "start"]
+

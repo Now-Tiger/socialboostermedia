@@ -1,18 +1,22 @@
 # Stage 1: The Build Environment
 FROM node:18-alpine AS builder
 
-# Set the working directory
+# Set the working directory to the root of the application
 WORKDIR /app
 
-# Copy package.json, package-lock.json, and yarn.lock (if applicable)
+# Copy the frontend folder and its contents
+COPY ./frontend ./frontend
+
+# Change the working directory to the frontend folder
+WORKDIR /app/frontend
+
+# Copy package.json and package-lock.json from the builder context
+# to leverage Docker caching.
 COPY package.json package-lock.json ./
 
 # Install all dependencies (including devDependencies)
 # Using `npm install` here to automatically fix any lock file inconsistencies.
 RUN npm install
-
-# Copy the rest of your application code
-COPY . .
 
 # Run the Next.js build command
 RUN npm run build
@@ -25,10 +29,10 @@ WORKDIR /app
 
 # Copy only the necessary files for a production environment
 # This significantly reduces the final image size.
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/package-lock.json ./package-lock.json
+COPY --from=builder /app/frontend/.next ./.next
+COPY --from=builder /app/frontend/public ./public
+COPY --from=builder /app/frontend/package.json ./package.json
+COPY --from=builder /app/frontend/package-lock.json ./package-lock.json
 
 # Install only production dependencies in the final image
 RUN npm ci --only=production
@@ -38,4 +42,5 @@ EXPOSE 3000
 
 # Set the command to run the application
 CMD ["npm", "start"]
+
 

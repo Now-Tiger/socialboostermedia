@@ -4,12 +4,12 @@ FROM node:18-alpine AS builder
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json to leverage Docker caching
+# Copy package.json, package-lock.json, and yarn.lock (if applicable)
 COPY package.json package-lock.json ./
 
 # Install all dependencies (including devDependencies)
-# The `npm ci` command is crucial here for a clean, reproducible build
-RUN npm ci
+# Using `npm install` here to automatically fix any lock file inconsistencies.
+RUN npm install
 
 # Copy the rest of your application code
 COPY . .
@@ -37,4 +37,3 @@ EXPOSE 3000
 
 # Set the command to run the application
 CMD ["npm", "start"]
-

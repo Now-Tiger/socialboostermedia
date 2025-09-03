@@ -49,7 +49,7 @@ jobs:
         run: |
           # Define image name and tags
           # 'github.repository' automatically gets the repo name (e.g., 'your-username/your-repo-name')
-          IMAGE_NAME="ghcr.io/${{ github.repository }}/socialboostermedia"
+          IMAGE_NAME="ghcr.io/now-tiger/socialboostermedia/assessment"
           VERSION=${{ github.sha }}
 
           # Build the Docker image

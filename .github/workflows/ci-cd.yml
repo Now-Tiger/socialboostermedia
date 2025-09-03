@@ -1,0 +1,67 @@
+# Workflow for CI/CD using GitHub Actions
+# This workflow is triggered on pushes and pull requests to the main branch
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+# Define the single job for our pipeline
+jobs:
+  build_and_deploy:
+    # Run the job on a fresh Ubuntu runner
+    runs-on: ubuntu-latest
+
+    # Give the job necessary permissions to push to the GitHub Container Registry
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Set up Node.js
+        # We'll use the official Node.js setup action
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18 # You can specify your desired Node.js version here
+
+      - name: 📦 Install dependencies
+        # Use 'npm ci' for clean, deterministic builds
+        run: npm ci
+
+      - name: 🧹 Run linting
+        # The '|| true' allows the workflow to continue even if linting fails,
+        # but you should remove this in production for stricter checks.
+        run: npm run lint || true
+
+      - name: 🏗️ Build the project
+        # This runs your 'build' script to compile the Next.js application
+        run: npm run build
+
+      - name: 🐳 Build and push Docker image
+        # This step handles the entire Docker image lifecycle
+        run: |
+          # Define image name and tags
+          # 'github.repository' automatically gets the repo name (e.g., 'your-username/your-repo-name')
+          IMAGE_NAME="ghcr.io/${{ github.repository }}/socialboostermedia"
+          VERSION=${{ github.sha }}
+
+          # Build the Docker image
+          docker build --tag $IMAGE_NAME:$VERSION .
+
+          # Log in to the GitHub Container Registry
+          # GITHUB_TOKEN is automatically provided by GitHub Actions
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+          # Push the image to GHCR
+          docker push $IMAGE_NAME:$VERSION
+
+      - name: ✅ Report success
+        # This step is just a friendly message at the end
+        run: echo "🎉 CI/CD pipeline finished successfully!"

@@ -1,0 +1,18 @@
+.next/
+node_modules/
+npm-debug.log
+.DS_Store
+.env
+.env.local
+
+# Next.js build output
+.next/
+
+# Folders created by the build process
+out/
+
+# Local development files and settings
+.vscode/
+.git/
+.gitignore
+

@@ -48,3 +48,4 @@ jobs:
           docker push $IMAGE_NAME:$VERSION
 
       - name: ✅ Report success
+        run: echo "🎉 CI/CD pipeline finished successfully!"

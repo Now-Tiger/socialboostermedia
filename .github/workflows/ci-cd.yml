@@ -34,15 +34,18 @@ jobs:
       - name: 📦 Install dependencies
         # Use 'npm ci' for clean, deterministic builds
         run: npm ci
+        working-directory: ./frontend
 
       - name: 🧹 Run linting
         # The '|| true' allows the workflow to continue even if linting fails,
         # but you should remove this in production for stricter checks.
         run: npm run lint || true
+        working-directory: ./frontend
 
       - name: 🏗️ Build the project
         # This runs your 'build' script to compile the Next.js application
         run: npm run build
+        working-directory: ./frontend
 
       - name: 🐳 Build and push Docker image
         # This step handles the entire Docker image lifecycle
@@ -61,6 +64,8 @@ jobs:
 
           # Push the image to GHCR
           docker push $IMAGE_NAME:$VERSION
+
+        working-directory: ./frontend
 
       - name: ✅ Report success
         # This step is just a friendly message at the end

@@ -8,6 +8,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install all dependencies (including devDependencies)
+# The `npm ci` command is crucial here for a clean, reproducible build
 RUN npm ci
 
 # Copy the rest of your application code
@@ -22,14 +23,18 @@ FROM node:18-alpine AS runner
 # Set the working directory
 WORKDIR /app
 
-# Copy the build output and essential files from the builder stage
+# Copy only the necessary files for a production environment
+# This significantly reduces the final image size.
 COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+
+# Install only production dependencies in the final image
+RUN npm ci --only=production
 
 # Expose the port Next.js runs on
 EXPOSE 3000
 
 # Set the command to run the application
 CMD ["npm", "start"]
+

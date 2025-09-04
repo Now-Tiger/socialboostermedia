@@ -51,4 +51,4 @@ jobs:
         working-directory: frontend
 
       - name: ✅ Report success
-        run: echo "🎉 CI/CD pipeline finished successfully!"       run: echo "🎉 CI/CD pipeline finished successfully!"
+        run: echo "🎉 CI/CD pipeline finished successfully!"

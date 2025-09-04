@@ -1,4 +1,3 @@
-# continuous integration
 name: CI/CD Pipeline
 
 on:
@@ -42,13 +41,11 @@ jobs:
           IMAGE_NAME="ghcr.io/now-tiger/socialboostermedia/assessment"
           VERSION=${{ github.sha }}
 
-          docker build --tag $IMAGE_NAME:$VERSION .
+          docker build --tag $IMAGE_NAME:$VERSION frontend
 
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
           docker push $IMAGE_NAME:$VERSION
-
-        working-directory: frontend
 
       - name: ✅ Report success
         run: echo "🎉 CI/CD pipeline finished successfully!"

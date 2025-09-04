@@ -1,0 +1,8 @@
+__pycache__
+static
+.env.prod
+db.sqlite3
+.vscode/
+.venv/
+.env
+env/

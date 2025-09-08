@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  icons: "./watermelon.png",
   title: "Social Booster Media",
   description: "Assesment Submission",
+  icons: { icon: "./watermelon.png" },
 };
 
 export default function RootLayout({

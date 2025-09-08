@@ -1,5 +1,5 @@
 [project]
-name = "backend"
+name = "sbm-backend"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -8,4 +8,5 @@ dependencies = [
     "django>=5.2.6",
     "django-cors-headers>=4.7.0",
     "djangorestframework>=3.16.1",
+    "psycopg2-binary>=2.9.10",
 ]

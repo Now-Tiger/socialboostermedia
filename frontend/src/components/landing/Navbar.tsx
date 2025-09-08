@@ -43,23 +43,25 @@ export default function Navbar() {
             Product
           </Link>
           <Link
-            href="/#pricing"
+            href="/analytics"
             className="text-gray-800 hover:text-slate-500 transition-colors"
           >
-            Pricing
+            Dashboard
           </Link>
-          <a
-            href="#features"
+          <Link
+            href="/app"
             className="text-gray-800 hover:text-slate-500 transition-colors"
           >
-            Features
-          </a>
-          <a
-            href="#about"
-            className="text-gray-800 hover:text-slate-500 transition-colors"
+            App
+          </Link>
+          <a 
+            href={`${process.env.repo}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-4 hover:underline"
           >
             About
-          </a>
+        </a>
         </div>
 
         {/* Auth Buttons */}

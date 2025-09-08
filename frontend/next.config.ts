@@ -3,6 +3,12 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
+  env: {
+    djangoBackendUrl: 'http://0.0.0.0:8000/',
+    djangoBackendAlternateUrl: 'http://localhost:8000/',
+    repo: 'https://github.com/Now-Tiger/socialboostermedia',
+    publicBitCoinBaseUrl: 'https://data-api.coindesk.com/index/cc/v1/latest/tick',
+  },
   async headers() {
     return [
       {

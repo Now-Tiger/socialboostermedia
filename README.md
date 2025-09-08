@@ -74,6 +74,8 @@ npm install
 npm run dev
 ```
 
+Visit `http://localhost:3000` on your browser.
+
 # APIs
 
 The backend has two built in APIs. One third party api in used by the frontend only.

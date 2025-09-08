@@ -34,10 +34,9 @@ export const chartConfig = {
   ethereum: { label: "Ethereum (ETH)", color: "#627eea" },
 } satisfies ChartConfig;
 
-// const publicBitCoinBaseUrl = "https://data-api.coindesk.com/index/cc/v1/latest/tick";
-export const localDjangoBackendUrl = 'http://localhost:8000/crypto-market-data/'
+const localDjangoBackendUrl = 'http://localhost:8000/crypto-market-data/'
 
-const bitcoinUrl = process.env.publicBitCoinBaseUrl ?? process.env.djangoBackendUrl + 'crypto-market-data/'
+const bitcoinUrl = process.env.publicBitCoinBaseUrl ?? localDjangoBackendUrl;
 
 const params = {
   market: "cadli",

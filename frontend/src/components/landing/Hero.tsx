@@ -28,7 +28,8 @@ export default function Hero() {
     } catch (error) {
       console.error(`Failed to fetch data`, error);
       setStatus(false);
-      router.push("/#price");
+      const repoUrl = process.env.repo ?? 'https://github.com/Now-Tiger/socialboostermedia';
+      router.push(repoUrl);
     }
   };
 

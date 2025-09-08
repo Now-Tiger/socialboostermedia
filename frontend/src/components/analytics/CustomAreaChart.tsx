@@ -184,7 +184,7 @@ export function ChartAreaInteractive() {
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1">
           <CardTitle>{chartInfo.title}</CardTitle>
-          <CardDescription>{chartInfo.description}</CardDescription>
+          <CardDescription>{chartInfo.description} <b>Third party api call</b> </CardDescription>
         </div>
         <Select
           value={chartType}

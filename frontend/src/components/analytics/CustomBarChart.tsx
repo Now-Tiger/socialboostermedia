@@ -36,7 +36,6 @@ export const CustomBarChart = ({ heightClass = "h-64" }: Fields) => {
     const controller = new AbortController();
     const fetchData = async () => {
       try {
-        console.log(`Api: ${apiEndPoint}`)
         const response = await fetch(apiEndPoint, {
           ...options,
           signal: controller.signal,
@@ -90,9 +89,9 @@ export const CustomBarChart = ({ heightClass = "h-64" }: Fields) => {
     <Card className="pt-0">
       <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
         <div className="grid flex-1 gap-1">
-          <CardTitle>Visitors Activity</CardTitle>
+          <CardTitle>Visitors Activity (Desktop vs Mobile)</CardTitle>
           <CardDescription>
-            Showing monthly visitors (Desktop vs Mobile)
+            Showing monthly visitors. Data is fetched from <b>Django API call</b>.
           </CardDescription>
         </div>
       </CardHeader>

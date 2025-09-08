@@ -12,7 +12,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'foo')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = bool(os.environ.get('DEBUG', 0))
 DEBUG = True
 
 if DEBUG:
@@ -82,16 +81,7 @@ DATABASES = {
         'USER': os.environ.get('SQL_USER', ''),
         'PASSWORD': os.environ.get('SQL_PASSWORD', ''),
     }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'socialboostermedia',
-    #     'USER': 'postgres',
-    #     'PASSWORD': 'swapnil',
-    #     'HOST': 'localhost',  # or your database host's IP address
-    #     'PORT': '5432',       # or your database port
-    # }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

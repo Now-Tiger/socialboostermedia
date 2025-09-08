@@ -37,7 +37,7 @@ export default function Hero() {
     <div className="flex h-screen w-full items-center justify-center bg-gray-50 dark:bg-gray-900">
       <Card className="w-[350px] shadow-lg shadow-gray-200 py-20">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">Data Dashboard</CardTitle>
+          <CardTitle className="text-2xl font-bold">Home Page</CardTitle>
           <CardDescription>
             Choose an action below to manage analytics data.
           </CardDescription>

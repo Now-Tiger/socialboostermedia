@@ -28,6 +28,14 @@ Follow below steps one by one
 docker compose build
 ```
 
+#### Pull Postgres image
+
+For some reasons `docker-compose.yml` is not able to full postgres image. You'll have to enter below command. **This is an important step**
+
+```bash
+docker pull postgres:15.5-alpine
+```
+
 #### Start containers
 
 Below command runs the containers in the background.

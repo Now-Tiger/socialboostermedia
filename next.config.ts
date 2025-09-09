@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
       {
         // matching all API routes
         source: "/api/:path*",
+        destination: "http://52.91.1.148:8000/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },
           { key: "Access-Control-Allow-Origin", value: "*" }, // replace this your actual origin

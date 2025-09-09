@@ -22,7 +22,7 @@ interface Fields {
   heightClass?: string;
 }
 
- const apiEndPoint = process.env.awsUserAnalyticsRoute ?? 'http://52.91.1.148:8000/user-analytics/';
+ const apiEndPoint = 'http://52.91.1.148:8000/user-analytics/';
 
 const options = {
   method: "GET",

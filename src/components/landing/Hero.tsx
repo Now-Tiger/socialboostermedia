@@ -11,8 +11,7 @@ export default function Hero() {
   const router = useRouter();
 
   const fetchData = async () => {
-    const apiEndPoint = process.env.djangoBackendUrl ?? 'http://127.0.0.1:8000/';
-
+    const apiEndPoint = 'http://52.91.1.148:8000/'
     try {
       const response = await fetch(apiEndPoint, {
         method: "GET",
@@ -28,8 +27,7 @@ export default function Hero() {
     } catch (error) {
       console.error(`Failed to fetch data`, error);
       setStatus(false);
-      const repoUrl = process.env.repo ?? 'https://github.com/Now-Tiger/socialboostermedia';
-      router.push(repoUrl);
+      router.push('/#analytics');
     }
   };
 

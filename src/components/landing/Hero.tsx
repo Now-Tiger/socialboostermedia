@@ -4,14 +4,20 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
 export default function Hero() {
   const [, setStatus] = useState(false);
   const router = useRouter();
 
   const fetchData = async () => {
-    const apiEndPoint = 'http://52.91.1.148:8000/'
+    const apiEndPoint = "http://52.91.1.148:8000/";
     try {
       const response = await fetch(apiEndPoint, {
         method: "GET",
@@ -27,7 +33,7 @@ export default function Hero() {
     } catch (error) {
       console.error(`Failed to fetch data`, error);
       setStatus(false);
-      router.push('/#analytics');
+      router.push("/#analytics");
     }
   };
 

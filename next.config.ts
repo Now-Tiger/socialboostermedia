@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
   env: {
-    djangoBackendUrl: 'http://44.202.228.85:8000/',
+    djangoBackendUrl: 'http://52.91.1.148:8000/',
     djangoBackendLocalhost: 'http://localhost:8000/',
     repo: 'https://github.com/Now-Tiger/socialboostermedia',
     publicBitCoinBaseUrl: 'https://data-api.coindesk.com/index/cc/v1/latest/tick',

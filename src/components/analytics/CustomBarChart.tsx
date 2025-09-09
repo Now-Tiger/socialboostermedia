@@ -22,7 +22,7 @@ interface Fields {
   heightClass?: string;
 }
 
- const apiEndPoint = process.env.djangoBackendUrl + 'user-analytics/';
+ const apiEndPoint = process.env.awsUserAnalyticsRoute ?? 'http://52.91.1.148:8000/user-analytics/';
 
 const options = {
   method: "GET",
@@ -37,8 +37,6 @@ export const CustomBarChart = ({ heightClass = "h-64" }: Fields) => {
     const controller = new AbortController();
     const fetchData = async () => {
       try {
-        console.log(`AWS API: ${apiEndPoint}`);
-
         const response = await fetch(apiEndPoint, {
           ...options,
           signal: controller.signal,

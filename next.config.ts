@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   devIndicators: false,
   env: {
     djangoBackendUrl: 'http://52.91.1.148:8000/',
+    awsUserAnalyticsRoute: 'http://52.91.1.148:8000/user-analytics/',
     djangoBackendLocalhost: 'http://localhost:8000/',
     repo: 'https://github.com/Now-Tiger/socialboostermedia',
     publicBitCoinBaseUrl: 'https://data-api.coindesk.com/index/cc/v1/latest/tick',

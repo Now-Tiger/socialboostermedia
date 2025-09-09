@@ -1,6 +1,6 @@
 # Social Booster Media App
 
-![image](./frontend/public/analytics-page.png)
+![image](./public/analytics-page.png)
 
 - This is a simple crud application built with **NextJS**, **Python(django)** & **PostgreSQL**. This app is my submission to social booster media's take-home assessment.
 - In this readme file first you'll find application setup instructions, then I have given information about the backend (APIs) that I have built and used i.e. third party apis.

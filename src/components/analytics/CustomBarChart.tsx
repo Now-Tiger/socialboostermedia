@@ -37,7 +37,7 @@ export const CustomBarChart = ({ heightClass = "h-64" }: Fields) => {
     const controller = new AbortController();
     const fetchData = async () => {
       try {
-        const response = await fetch(apiEndPoint, {
+        const response = await fetch('http://52.91.1.148:8000/user-analytics/', {
           ...options,
           signal: controller.signal,
         });

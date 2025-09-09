@@ -22,8 +22,7 @@ interface Fields {
   heightClass?: string;
 }
 
-// const apiEndPoint = process.env.djangoBackendUrl + 'user-analytics/';
-const apiEndPoint = 'http://44.202.228.85:8000/user-analytics/';
+ const apiEndPoint = process.env.djangoBackendUrl + 'user-analytics/';
 
 const options = {
   method: "GET",

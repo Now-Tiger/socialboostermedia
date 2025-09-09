@@ -4,17 +4,18 @@ const nextConfig: NextConfig = {
   /* config options here */
   devIndicators: false,
   env: {
-    djangoBackendUrl: 'http://52.91.1.148:8000/',
-    awsUserAnalyticsRoute: 'http://52.91.1.148:8000/user-analytics/',
-    djangoBackendLocalhost: 'http://localhost:8000/',
-    repo: 'https://github.com/Now-Tiger/socialboostermedia',
-    publicBitCoinBaseUrl: 'https://data-api.coindesk.com/index/cc/v1/latest/tick',
+    djangoBackendUrl: "http://52.91.1.148:8000/",
+    awsUserAnalyticsRoute: "http://52.91.1.148:8000/user-analytics/",
+    djangoBackendLocalhost: "http://localhost:8000/",
+    repo: "https://github.com/Now-Tiger/socialboostermedia",
+    publicBitCoinBaseUrl:
+      "https://data-api.coindesk.com/index/cc/v1/latest/tick",
   },
   async headers() {
     return [
       {
         // matching all API routes
-        source: "/api/:path*",
+        source: "/:path*",
         // destination: "http://52.91.1.148:8000/:path*",
         headers: [
           { key: "Access-Control-Allow-Credentials", value: "true" },

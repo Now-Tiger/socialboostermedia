@@ -17,7 +17,7 @@ export default function Hero() {
   const router = useRouter();
 
   const fetchData = async () => {
-    const apiEndPoint = "http://52.91.1.148:8000/";
+    const apiEndPoint = process.env.djangoBackendUrl ?? "https://nowtiger.dpdns.org/";
     try {
       const response = await fetch(apiEndPoint, {
         method: "GET",

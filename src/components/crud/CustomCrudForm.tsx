@@ -10,8 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 
-const djangoBackendUrl = process.env.djangoBackendUrl
-const apiEndPoint = djangoBackendUrl + 'user-analytics/'
+const apiEndPoint = process.env.awsUserAnalyticsRoute ?? 'https://nowtiger.dpdns.org/user-analytics/';
 const zodSchemaMsg = "Should be a postive number.";
 
 const FormSchema = z.object({

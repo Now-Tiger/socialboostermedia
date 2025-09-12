@@ -22,7 +22,8 @@ interface Fields {
   heightClass?: string;
 }
 
- const apiEndPoint = 'http://52.91.1.148:8000/user-analytics/';
+const apiEndPoint = process.env.awsUserAnalyticsRoute ?? 'https://nowtiger.dpdns.org/user-analytics/';
+
 
 const options = {
   method: "GET",
@@ -37,7 +38,7 @@ export const CustomBarChart = ({ heightClass = "h-64" }: Fields) => {
     const controller = new AbortController();
     const fetchData = async () => {
       try {
-        const response = await fetch('http://52.91.1.148:8000/user-analytics/', {
+        const response = await fetch(apiEndPoint, {
           ...options,
           signal: controller.signal,
         });
